@@ -1,0 +1,108 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - backend_net
+
+  mongo:
+    image: mongo:6
+    container_name: mongo-cluster
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - backend_net
+
+  mariadb:
+    image: mariadb:10.5
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: billingdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    volumes:
+      - billing_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - backend_net
+
+  auth-service:
+    build: ./servicio-autenticacion
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+    networks:
+      - backend_net
+
+  user-service:
+    build: ./servicio-usuarios
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    networks:
+      - backend_net
+
+  billing-service:
+    build: ./servicio-facturacion
+    ports:
+      - "3002:3002"
+    depends_on:
+      - mariadb
+    networks:
+      - backend_net
+
+  video-service:
+    build: ./servicio-videos
+    ports:
+      - "3003:3003"
+    depends_on:
+      - mongo
+    networks:
+      - backend_net
+
+  monitoring-service:
+    build: ./servicio-monitoreo
+    ports:
+      - "3004:3004"
+    networks:
+      - backend_net
+
+  playlist-service:
+    build: ./servicio-playlists
+    ports:
+      - "3005:3005"
+    networks:
+      - backend_net
+
+  social-service:
+    build: ./servicio-social
+    ports:
+      - "3006:3006"
+    depends_on:
+      - mongo
+    networks:
+      - backend_net
+
+  mail-service:
+    build: ./servicio-correos
+    ports:
+      - "3007:3007"
+    networks:
+      - backend_net
+
+volumes:
+  mongo_data:
+  billing_data:
+
+networks:
+  backend_net:
+    driver: bridge
