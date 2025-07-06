@@ -7,27 +7,17 @@ Este repositorio contiene el codigo fuente para el servicio de interacciones soc
 
 ## Instalación y configuración
 
-1. **Clonar el repositorio**
-```bash
-git clone https://github.com/Codelsoft-Microservices/codelsoft-social.git
-```
-
-2. **Ingresar al directorio del proyecto**
-```bash
-cd codelsoft-social
-```
-
-3. **Instalar las dependencias**
+1. **Instalar las dependencias**
 ```bash
 npm install
 ```
 
-4. **Crear un archivo `.env` en la raíz del proyecto y ingresar las variables de entorno**
+2. **Crear un archivo `.env` en la raíz del proyecto y ingresar las variables de entorno**
 ```bash
 cp .env.example .env
 ```
 
-5. **Instalación de Imagenes de docker**
+3. **Instalación de Imagenes de docker**
 ```bash
 docker compose up -d
 ```

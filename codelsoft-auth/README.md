@@ -17,34 +17,24 @@ password: user
 ```
 ## Instalación y configuración
 
-1. **Clonar el repositorio**
-```bash
-git clone https://github.com/Codelsoft-Microservices/codelsoft-auth.git
-```
-
-2. **Ingresar al directorio del proyecto**
-```bash
-cd codelsoft-auth
-```
-
-3. **Instalar las dependencias**
+1. **Instalar las dependencias**
 ```bash
 npm install
 ```
 
-4. **Crear un archivo `.env` en la raíz del proyecto y ingresar las variables de entorno**
+2. **Crear un archivo `.env` en la raíz del proyecto y ingresar las variables de entorno**
 ```bash
 cp .env.example .env
 ```
 
-5. **Instalación de Imagenes de docker**
+3. **Instalación de Imagenes de docker**
 ```bash
 docker compose up -d
 ```
 
 Se debe asegurar de haber instalado las imagenes de Docker y ademas de haber creado correctamente su .env
 
-6. **configuración de ORM**
+4. **configuración de ORM**
 
 ```bash
 npx prisma migrate dev

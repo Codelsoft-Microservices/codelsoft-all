@@ -11,22 +11,12 @@ Se debe realizar el proceso de seeding manualmente en cada repositorio segun cor
 
 ## Instalación y configuración
 
-1. **Clonar el repositorio**
-```bash
-git clone https://github.com/Codelsoft-Microservices/codelsoft-api-gateway.git
-```
-
-2. **Ingresar al directorio del proyecto**
-```bash
-cd codelsoft-api-gateway
-```
-
-3. **Instalar las dependencias**
+1. **Instalar las dependencias**
 ```bash
 npm install
 ```
 
-4. **Crear un archivo `.env` en la raíz del proyecto y ingresar las variables de entorno**
+2. **Crear un archivo `.env` en la raíz del proyecto y ingresar las variables de entorno**
 ```bash
 cp .env.example .env
 ```
