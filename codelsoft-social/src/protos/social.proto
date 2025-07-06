@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package social;
 
-service SocialInteractions {
+service SocialService {
   rpc LikeVideo(Empty) returns (StatusResponse);
   rpc CommentVideo(Empty) returns (StatusResponse);
   rpc GetVideoLikesAndCommentsRequest(Empty) returns (StatusResponse);

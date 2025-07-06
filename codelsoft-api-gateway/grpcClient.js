@@ -32,7 +32,7 @@ const loadClient = (app) => {
     console.log("Playlist client loaded successfully");
 
     const socialProto = loadProto("social");
-    app.locals.socialClient = new socialProto.SocialInteractions(
+    app.locals.socialClient = new socialProto.SocialService(
         process.env.SOCIAL_SERVICE_URL,
         credentials.createInsecure()
     );

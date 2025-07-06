@@ -112,6 +112,246 @@
 			]
 		},
 		{
+			"name": "videos",
+			"item": [
+				{
+					"name": "Listar todos los videos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/videos/?title=&genre",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"videos",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": ""
+								},
+								{
+									"key": "genre",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subir vídeo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Test\",\r\n    \"description\": \"aaaaaaaa\",\r\n    \"genre\": \"Comedy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/videos/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"videos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar video",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Test\",\r\n    \"description\": \"aaaaaaaa\",\r\n    \"genre\": \"Comedy\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/videos/{{video_uuid}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"videos",
+								"{{video_uuid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener video por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/videos/{{video_uuid}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"videos",
+								"{{video_uuid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar video",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Test A\",\r\n    \"description\": \"aaaaaaaa\",\r\n    \"genre\": \"Comedy\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/videos/{{video_uuid}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"videos",
+								"{{video_uuid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "billing",
+			"item": [
+				{
+					"name": "Listar facturas por usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/facturas/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"facturas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener factura por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/facturas/{{bill_uuid}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"facturas",
+								"{{bill_uuid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear factura",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userUuid\": \"2e26835f-8c9f-4190-a2c3-5111aa6cf65c\",\r\n    \"billStatus\": \"Paid\",\r\n    \"amount\": 15000\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/facturas/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"facturas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar estado de factura",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"billStatus\": \"Overdue\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/facturas/{{bill_uuid}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"facturas",
+								"{{bill_uuid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar factura",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/facturas/{{bill_uuid}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"facturas",
+								"{{bill_uuid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Users",
 			"item": [
 				{
@@ -253,6 +493,108 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Monitoring",
+			"item": [
+				{
+					"name": "Listar todas las acciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/monitoreo/acciones",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"monitoreo",
+								"acciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar todos los errores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/monitoreo/errores",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"monitoreo",
+								"errores"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Social",
+			"item": [
+				{
+					"name": "Obtener likes y comentarios de un video",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/interacciones/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"interacciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dar like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/interacciones/1/likes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"interacciones",
+								"1",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dejar comentario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/interacciones/1/comentarios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"interacciones",
+								"1",
+								"comentarios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -294,11 +636,6 @@
 			"type": "string"
 		},
 		{
-			"key": "auth_token",
-			"value": "",
-			"type": "string"
-		},
-		{
 			"key": "user_uuid",
 			"value": "",
 			"type": "string"
@@ -310,11 +647,6 @@
 		},
 		{
 			"key": "bill_uuid",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"key": "auth_uuid",
 			"value": "",
 			"type": "string"
 		}

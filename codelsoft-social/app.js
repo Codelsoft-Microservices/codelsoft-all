@@ -50,7 +50,7 @@ const server = new Server();
 //     });
 
 const socialProto = loadProto("social");
-server.addService(socialProto.SocialInteractions.service, socialService);
+server.addService(socialProto.SocialService.service, socialService);
 
 server.bindAsync(
     `${process.env.SERVER_URL}:${process.env.PORT}`,

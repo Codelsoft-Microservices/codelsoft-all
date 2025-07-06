@@ -98,6 +98,23 @@ services:
     networks:
       - backend_net
 
+  codelsoft-api-gateway:
+      build: ./codelsoft-api-gateway
+      ports:
+        - "50052:50052"
+      depends_on:
+        - rabbitmq
+        - auth-service
+        - user-service
+        - billing-service
+        - video-service
+        - monitoring-service
+        - playlist-service
+        - social-service
+        - mail-service
+      networks:
+        - backend_net
+
 volumes:
   mongo_data:
   billing_data:
