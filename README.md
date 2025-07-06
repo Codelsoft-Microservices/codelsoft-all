@@ -16,7 +16,7 @@ El sistema está compuesto por los siguientes microservicios:
 - **Servicio Social** (`codelsoft-social`) - Puerto 3006
 - **Servicio de Correos** (`codelsoft-mail`) - Puerto 3007
 
-### 🗄️ Bases de Datos
+### 🥚 Bases de Datos
 
 - **MongoDB** (Puerto 27017) - Para servicios de autenticación, usuarios, videos y social
 - **MariaDB** (Puerto 3306) - Para el servicio de facturación
