@@ -34,7 +34,7 @@ El sistema está compuesto por los siguientes microservicios:
 
 1. **Clonar el repositorio**
 ```bash
-git clone <repository-url>
+git clone https://github.com/Codelsoft-Microservices/codelsoft-all
 cd codelsoft-all
 ```
 
@@ -47,7 +47,7 @@ docker-compose up --build
 
 1. **Clonar el repositorio**
 ```bash
-git clone <repository-url>
+git clone https://github.com/Codelsoft-Microservices/codelsoft-all
 cd codelsoft-all
 ```
 
@@ -118,7 +118,7 @@ cd codelsoft-auth && npm start
 ## Endpoints y Acceso
 
 - **API Gateway**: `http://localhost:50052`
-- **RabbitMQ Management**: `http://localhost:15672` (guest/guest)
+- **RabbitMQ**: `http://localhost:15672`
 - **MongoDB**: `mongodb://localhost:27017`
 - **MariaDB**: `localhost:3306`
 
