@@ -1,0 +1,129 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "15672:15672" 
+      - "5672:5672"    
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+
+  auth-db:
+    image: postgres:latest
+    container_name: postgres-codelsoft
+    restart: always
+    environment:
+        POSTGRES_USER: user
+        POSTGRES_PASSWORD: userpassword
+        POSTGRES_DB: mydatabase
+        PGDATA: /data/postgres
+    ports:
+        - "5432:5432"
+
+  billing-db:
+    image: mariadb:latest
+    container_name: mariadb-codelsoft
+    environment:
+        MYSQL_ROOT_PASSWORD: rootpassword
+        MYSQL_DATABASE: mydatabase
+        MYSQL_USER: user
+        MYSQL_PASSWORD: userpassword
+    ports:
+        - "3306:3306"
+
+  mongo-cluster:
+    image: mongo:latest
+    container_name: mongo-cluster
+    restart: always
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: admin
+        MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+    - "27017:27017"
+
+  # Monitoring no tiene base de datos
+
+  # Playlist no tiene base de datos
+
+  # Microservicios 
+  auth-service:
+    image: codelsoft/servicio-autenticacion:latest
+    ports:
+      - "3001:3001"
+    depends_on:
+      - auth-db
+    networks:
+      - backend_net
+
+  user-service:
+    image: codelsoft/servicio-usuarios:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-db
+    networks:
+      - backend_net
+
+  billing-service:
+    image: codelsoft/servicio-facturacion:latest
+    ports:
+      - "3002:3002"
+    depends_on:
+      - billing-db
+    networks:
+      - backend_net
+
+  video-service:
+    image: codelsoft/servicio-videos:latest
+    ports:
+      - "3003:3003"
+    depends_on:
+      - video-db
+    networks:
+      - backend_net
+
+  monitoring-service:
+    image: codelsoft/servicio-monitoreo:latest
+    ports:
+      - "3004:3004"
+    depends_on:
+      - monitoring-db
+    networks:
+      - backend_net
+
+  playlist-service:
+    image: codelsoft/servicio-playlists:latest
+    ports:
+      - "3005:3005"
+    depends_on:
+      - playlist-db
+    networks:
+      - backend_net
+
+  social-service:
+    image: codelsoft/servicio-social:latest
+    ports:
+      - "3006:3006"
+    depends_on:
+      - social-db
+    networks:
+      - backend_net
+
+  mail-service:
+    image: codelsoft/servicio-correos:latest
+    ports:
+      - "3007:3007"
+    networks:
+      - backend_net
+
+volumes:
+  auth_data:
+  billing_data:
+  mongo_data:
+
+networks:
+  backend_net:
+    driver: bridge
